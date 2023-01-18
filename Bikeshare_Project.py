@@ -10,6 +10,14 @@ CITY_DATA = {
 
 
 def filters(city="", month="", day=""):
+    """
+    User inputs specified city, month, and day to analyze.
+
+    Returns:
+        (str) city - name of the city to analyze
+        (str) month - name of the month to filter by, or "all" to apply no month filter
+        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    """
     global cities
     cities = ["chicago", "new york city", "washington"]
     city = str(
@@ -62,6 +70,17 @@ def filters(city="", month="", day=""):
 
 
 def load_data(city, month, day):
+    """
+    Loads information from the previously specified data.
+
+    Args:
+        (str) city - name of the city to analyze
+        (str) month - name of the month to filter by, or "all" to apply no month filter
+        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    Returns:
+        df - Pandas DataFrame containing city data filtered by month and day
+    """
+
     df = pd.read_csv(CITY_DATA[city])
     if month != "all":
         df["Start Time"] = pd.to_datetime(df["Start Time"])
@@ -76,6 +95,12 @@ def load_data(city, month, day):
 
 
 def time_stats(df):
+    """
+    Displays time statistics from a generated DataFrame
+
+    Args:
+        df - Panda DataFrame
+    """
     print("\nCalculating The Most Frequent Times of Travel...\n")
     start_time = time.time()
 
@@ -97,6 +122,12 @@ def time_stats(df):
 
 
 def station_stats(df):
+    """
+    Displays bike station statistics from a generated DataFrame
+
+    Args:
+        df - Panda DataFrame
+    """
     print("\nCalculating The Most Popular Stations and Trip...\n")
     start_time = time.time()
 
@@ -116,6 +147,13 @@ def station_stats(df):
 
 
 def trip_duration_stats(df):
+    """
+    Displays trip statistics from a generated DataFrame
+
+    Args:
+        df - Panda DataFrame
+    """
+
     print("\nCalculating Trip Duration...\n")
     start_time = time.time()
 
@@ -131,6 +169,12 @@ def trip_duration_stats(df):
 
 
 def user_stats(df):
+    """
+    Displays user statistics from a generated DataFrame
+
+    Args:
+        df - Panda DataFrame
+    """
     print("\nCalculating User Stats...\n")
     start_time = time.time()
 
